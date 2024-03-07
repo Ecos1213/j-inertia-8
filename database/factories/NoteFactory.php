@@ -18,6 +18,8 @@ class NoteFactory extends Factory
     {
         return [
             //
+            "excerpt"=> $this->faker->text(140),
+            "content"=> $this->faker->text(1200),
         ];
     }
 }
