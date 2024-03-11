@@ -52,6 +52,12 @@ const logout = () => {
                                     Dashboard
                                 </NavLink>
                             </div>
+
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink :href="route('notes.index')" :active="route().current('notes.*')"> <!-- colocamos el metodo route en hreft y le decimos que vaya a la ruta notes al controlador index que se crea en el resource para que empieze de una vez por el controlador index que muestra la pagina web no mas. hay que tener en cuenta que los cambios que apliquemos tanto en vue como en react necesitamos siempre transpilar o renderizar el javascrip para que transpile en app.js de la carpeta public tenemos dos comandos en laravel 10 que usa vite el primero seria npm run dev que es el mismo npm run watch osea que al darle el comando se quedara prendido para transpilar y el npm run build que lo que hace es transpilar de una todo solo una vez a la carpeta public para subir a produccion otra cosa a tener en cuenta es que vue ya tiene metodos de laravel gracias a inertia que instala jetstream y el metodo current :active="route().current('notes.*')" sirve para decirle todo lo que tenga el argumento del metodo current retorne como que está en esta ruta y esta convencion notes.* es que cualquier cosa que empize por notes retorne un true y este boton quede como css activo osea con estilos de hover para que se vea activo gracias a el tag de vue :active-->
+                                    Notes
+                                </NavLink>
+                            </div>
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -193,6 +199,9 @@ const logout = () => {
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('notes.index')" :active="route().current('notes.*')">
+                            Notas
                         </ResponsiveNavLink>
                     </div>
 

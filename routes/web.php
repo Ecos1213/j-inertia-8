@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\NoteController;
 use Inertia\Inertia;
 
 Route::view('/', 'index');
@@ -22,7 +23,7 @@ Route::get('dashboard', [PageController::class, 'dashboard']) // apuntamos al co
 ->name('dashboard'); // recuerda que el metodo name es para que nuestra ruta quede con ese nombre especialmente cuando usamos en la vista el metodo route ahi es donde mas usaremos el name
 
 
-Route::resource('notes', PageController::class) // recuerda que el resource lo que hace es crear todas las rutas crud en este caso para en controlador notes, no le colocamos un name por que precisamente el resource ya le coloca un nombre estandard
+Route::resource('notes', NoteController::class) // recuerda que el resource lo que hace es crear todas las rutas crud en este caso para en controlador notes, no le colocamos un name por que precisamente el resource ya le coloca un nombre estandard
 ->middleware('auth:sanctum');
 
 
