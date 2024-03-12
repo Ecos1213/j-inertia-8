@@ -6,6 +6,8 @@ use App\Models\Note;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Inertia\Inertia; // este componente nos permite unir laravel con vue
+
 class NoteController extends Controller
 {
     /**
@@ -13,7 +15,12 @@ class NoteController extends Controller
      */
     public function index()
     {
-        //
+        
+        // como estamos trabajando con esta nueva tecnologia, necesitamos invocarla que es inertia un componente de laravel
+        return Inertia::render('Notes/Index', [
+            'notes' => Note::latest()->get() // como en laravel sin inertia y sin vue podemos enviar datos como lo hace el metodo view pero en este caso lo mandamos por el render e igual que con el metodo view y gracias a eloquent que usamos el modelo para tomar todos los datos desde los ultimos hasta los mas viejos (el metodo latest toma los datos de forma descendete desde los recien subidos hasta los mas viejo ya que este ordena los datos con el campo created_at osea con las fechas mas nuevas hasta las viejas) y usamos el metodo get para decirle a laravel que tome la informacion si no hacemos esto aparecera un error
+        ]); // Ahora usamos el componente inertia y invocamos el metodo render para que renderize el dashboard de vue
+        // el render ira ala carpeta notes y renderizara el archivo Index.vue
     }
 
     /**
