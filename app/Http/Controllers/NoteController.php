@@ -1,5 +1,5 @@
 <?php
-
+// para crear un controlador con todas las funciones de resources y a la vez modelo y factory usamos el siguiente comando php artisan make:model -rfm r es para crear el controlador tipo resources con todos sus metodos f de factory y m migracion
 namespace App\Http\Controllers;
 
 use App\Models\Note;
@@ -44,7 +44,7 @@ class NoteController extends Controller
      */
     public function show(Note $note)
     {
-        //
+        return Inertia::render('Notes/Show', compact('note')); //El método compact() se utiliza para crear un array asociativo que contiene variables y sus valores. Toma una lista de nombres de variables como argumentos y devuelve un array donde las claves son los nombres de las variables y los valores son los valores actuales de esas variables. En resumen compact es igual a esto en este caso ['note' => $note], osea que le estamos pasando a esta vista el array
     }
 
     /**
